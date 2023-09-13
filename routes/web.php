@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\UserSubmissionController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home',[HomeController::class,'index']);
+Route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
+// Route::get('/home',[HomeController::class,'index']);
 Route::get('/users', [UserController::class, 'index'])->name('admin.displayUser');
 Route::resource('events', EventController::class);
 Route::get('/admin/events', [EventController::class, 'index'])->name('admin.event-index');
@@ -48,6 +50,18 @@ Route::get('/user/registration-form', [UserSubmissionController::class, 'showFor
 // Handle form submissions
 Route::post('/user/submit-registration', [UserSubmissionController::class, 'submit'])->name('user.submit-registration');
 Route::get('/user/event-registration', [EventRegistrationController::class, 'showForm'])->name('user.registration-form');
+
+
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/admin/user-submissions', 'AdminController@viewUserSubmissions')->name('admin.user-submissions');
+//     Route::patch('/admin/user-submissions/{id}', 'AdminController@updateUserSubmission')->name('admin.user-submissions.update');
+//     Route::get('/admin/user-submissions', 'AdminController@viewUserSubmissions')->name('admin.user-submissions.index');
+
+// });
+Route::get('/admin/user-submissions', [AdminController::class, 'viewUserSubmissions'])->name('admin.user-submissions.index');
+Route::patch('/admin/user-submissions/update/{id}', [AdminController::class, 'updateUserSubmission'])->name('admin.user-submissions.update');;
+Route::get('/admin/user-submissions/{id}/edit-message', [AdminController::class, 'editUserSubmissionMessage'])->name('admin.user-submissions.edit-message');
+Route::patch('/admin/user-submissions/{id}/update-message', [AdminController::class, 'updateUserSubmissionMessage'])->name('admin.user-submissions.update-message');
 
 
 Route::get('/user/registration-success', function () {

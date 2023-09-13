@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UserSubmission;
 
 class UserSubmissionName extends Model
 {
@@ -12,8 +13,7 @@ class UserSubmissionName extends Model
         'name', 
         'user_submission_id',
     ];
-
-
+    
     public function submission()
     {
         return $this->belongsTo(UserSubmission::class);

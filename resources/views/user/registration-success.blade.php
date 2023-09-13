@@ -14,7 +14,7 @@
                 <h1>Registration Successful</h1>
                 <p>Congratulations! Your registration was successful.</p>
                 <p>You can now log in and enjoy our services.</p>
-                <a href="{{ route('login') }}">Log In</a>
+                <a href="{{ route('user.dashboard') }}">Back</a>
     </div>
                 </div>
     

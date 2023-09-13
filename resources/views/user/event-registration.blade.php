@@ -21,13 +21,14 @@
                         <div class="form-group">
                             <label for="event">Select Active Event</label>
                             <select id="event" name="event" class="form-control" required>
-                                @foreach($events as $event)
-                                
-                                    @if($event->status == 1)
-                                        <option value="{{ $event->id }}">{{ $event->title }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            @foreach($events as $event)
+                                @if($event->status == 1)
+                                    <option value="{{ $event->id }}">
+                                        {{ $event->title }} ({{ $event->getSDate() }} - {{ $event->getEDate() }})
+                                    </option>
+                                @endif
+                            @endforeach
+                        </select>
                         </div>
                         <div class="form-group">
                             <label for="names">Enter Multiple Names (comma-separated)</label>

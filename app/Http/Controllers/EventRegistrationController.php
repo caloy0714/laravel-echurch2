@@ -45,7 +45,7 @@ class EventRegistrationController extends Controller
         }
 
         // Redirect to a success page or return a response
-        return redirect()->route('user.registration-success');
+        return redirect()->route('user.dashboard');
     }
 }
 
