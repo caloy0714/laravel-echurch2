@@ -15,7 +15,7 @@
     </x-sidebar.link>
 
     <x-sidebar.dropdown
-        title="Buttons"
+        title="Testing"
         :active="Str::startsWith(request()->route()->uri(), 'buttons')"
     >
         <x-slot name="icon">
@@ -44,15 +44,18 @@
         x-show="isSidebarOpen || isSidebarHovered"
         class="text-sm text-gray-500"
     >
-        Dummy Links
+        
     </div>
 
     @php
         $links = array_fill(0, 20, '');
     @endphp
 
-    @foreach ($links as $index => $link)
-        <x-sidebar.link title="Dummy link {{ $index + 1 }}" href="admin/index" />
-    @endforeach
+    
+        <x-sidebar.link title="Sample " href="#" />
+        
+        <x-sidebar.link title="Users" href="{{ route('admin.displayUser') }}"/>
+        <x-sidebar.link title="Events" href="{{ route('admin.event-index') }}"/>
+        
 
 </x-perfect-scrollbar>

@@ -19,6 +19,8 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Actions</th>
+                                <th>Status</th>
+                                <!-- <th>Code</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -28,14 +30,16 @@
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->start_date }}</td>
                                 <td>{{ $event->end_date }}</td>
+                                <td>{{ $event->status ? 'Active' : 'Inactive' }}</td>
                                 <td>
-                                    <a href="{{ route('admin.eventedit', $event->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" style="display: inline">
+                                    <a href="{{ route('admin.event-edit', $event->id) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('admin.event-destroy', $event->id) }}" method="POST" style="display: inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
+                                <!-- <td>RDzwpt6</td> -->
                             </tr>
                         @endforeach
                     </tbody>

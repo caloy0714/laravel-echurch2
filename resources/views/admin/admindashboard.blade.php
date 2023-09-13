@@ -1,5 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
                 {{ __('Dashboard') }}
@@ -14,26 +16,21 @@
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         {{ __("You're logged in as Admin!")  }}
-        <a href="{{ route('admin.index') }}" class="btn btn-primary">Go to Time Slots</a>
-        <div class="py-12">
+       
+       
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    
-                </table>
+            
+        
             </div>
         </div>
     </div>
+</div>
+<script>
 
-    </div>
+jQuery(document).ready( function () {
+    jQuery('#myTables').DataTable();
+});
+</script>
 
 
 </x-app-layout>

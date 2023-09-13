@@ -13,6 +13,15 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        {{ __("You're logged in as User!")  }}
+        {{ __("You're logged in as Usersss!")  }}
+        <a href="{{ route('user.event-registration') }}" class="btn btn-primary">
+            {{ __('Register for Event') }}
+</a>
+
+</head>
+<body>
+    <h1>Event Booking Form</h1>
+    
+</body>
     </div>
 </x-app-layout>

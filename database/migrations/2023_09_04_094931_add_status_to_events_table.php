@@ -9,24 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->timestamps();
+        Schema::table('events', function (Blueprint $table) {
+            $table->boolean('status')->default(true);
         });
     }
-    
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

@@ -42,4 +42,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getCreated()
+    {
+        return $this->created_at;
+    }
+
+    public function getUsertype()
+    {
+        return $this->usertype;
+    }
+
 }

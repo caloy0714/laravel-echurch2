@@ -5,6 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventRegistrationController;
+use App\Http\Controllers\UserSubmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,24 +24,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/welcome2', function () {
+    return view('welcome2');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
-
 Route::get('/home',[HomeController::class,'index']);
-
-// Route::resource('timeSlots', TimeSlotController::class);
-// Route::resource('time-slots', TimeSlotController::class);
-// Route::get('/admin', [TimeSlotController::class, 'create'])->name('admin.create');
-Route::resource('time-slots', TimeSlotController::class);
+Route::get('/users', [UserController::class, 'index'])->name('admin.displayUser');
 Route::resource('events', EventController::class);
-Route::get('/admin', [TimeSlotController::class, 'index'])->name('admin.index');
-Route::get('/admin/create', [TimeSlotController::class, 'create'])->name('admin.create');
+Route::get('/admin/events', [EventController::class, 'index'])->name('admin.event-index');
+Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.event-create');
+Route::post('/admin/events/store', [EventController::class, 'store'])->name('admin.event-store');
+Route::get('/admin/events/edit/{event}', [EventController::class, 'edit'])->name('admin.event-edit');
+Route::put('/admin/events/update/{event}', [EventController::class, 'update'])->name('admin.event-update');
+Route::delete('/admin/events/destroy/{event}', [EventController::class, 'destroy'])->name('admin.event-destroy');
 
 
+// Display the registration form
+Route::get('/user/registration-form', [UserSubmissionController::class, 'showForm'])->name('user.event-registration');
+// Handle form submissions
+Route::post('/user/submit-registration', [UserSubmissionController::class, 'submit'])->name('user.submit-registration');
+Route::get('/user/event-registration', [EventRegistrationController::class, 'showForm'])->name('user.registration-form');
+
+
+Route::get('/user/registration-success', function () {
+    return view('user.registration-success');
+})->name('user.registration-success');
 
 
 

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+    protected $fillable = ['title', 'start_date', 'end_date', 'status'];
+
+    public function submissions()
+    {
+        return $this->hasMany(UserSubmission::class);
+    }
+    
+
 }
