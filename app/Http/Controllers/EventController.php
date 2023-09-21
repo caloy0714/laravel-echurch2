@@ -45,7 +45,7 @@ class EventController extends Controller
             'title' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
-            'status' => 'boolean', // Ensure that status is a boolean
+            'status' => 'boolean', 
         ]);
 
         // Convert the "status" checkbox value to a boolean

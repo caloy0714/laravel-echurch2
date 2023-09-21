@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\UserSubmissionController;
 use App\Http\Controllers\AdminController;
+use App\Exports\UserSubmissionsExport;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,16 +53,19 @@ Route::post('/user/submit-registration', [UserSubmissionController::class, 'subm
 Route::get('/user/event-registration', [EventRegistrationController::class, 'showForm'])->name('user.registration-form');
 
 
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     Route::get('/admin/user-submissions', 'AdminController@viewUserSubmissions')->name('admin.user-submissions');
-//     Route::patch('/admin/user-submissions/{id}', 'AdminController@updateUserSubmission')->name('admin.user-submissions.update');
-//     Route::get('/admin/user-submissions', 'AdminController@viewUserSubmissions')->name('admin.user-submissions.index');
-
-// });
 Route::get('/admin/user-submissions', [AdminController::class, 'viewUserSubmissions'])->name('admin.user-submissions.index');
 Route::patch('/admin/user-submissions/update/{id}', [AdminController::class, 'updateUserSubmission'])->name('admin.user-submissions.update');;
 Route::get('/admin/user-submissions/{id}/edit-message', [AdminController::class, 'editUserSubmissionMessage'])->name('admin.user-submissions.edit-message');
 Route::patch('/admin/user-submissions/{id}/update-message', [AdminController::class, 'updateUserSubmissionMessage'])->name('admin.user-submissions.update-message');
+
+Route::get('/user/submitted-requests', [UserController::class, 'viewSubmittedRequests'])->name('user.submitted-requests');
+Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+
+
+//EXCEL
+Route::get('/export-user-submissions', [UserSubmissionController::class, 'exportUserSubmissions'])->name('export-user-submissions');
+
+
 
 
 Route::get('/user/registration-success', function () {

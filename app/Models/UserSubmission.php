@@ -5,22 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\UserSubmission; 
-
+use App\Models\User; 
 
 class UserSubmission extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', // Add 'name' to the fillable array
+        'name', 
         'event_id',
         'status',
         'message',
     ];
 
+    
     public function event()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class, 'event_id');
     }
+
 
     public function names()
     {
@@ -36,5 +38,16 @@ class UserSubmission extends Model
     {
         return $this->name;
     }
+    
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
 
 }

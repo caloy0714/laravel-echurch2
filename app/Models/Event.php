@@ -15,6 +15,12 @@ class Event extends Model
     {
         return $this->hasMany(UserSubmission::class);
     }
+
+    
+    public function getEvent()
+    {
+        return $this->title;
+    }
     
     public function getSDate()
     {
@@ -24,6 +30,11 @@ class Event extends Model
     public function getEDate()
     {
         return $this->end_date;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 
 }

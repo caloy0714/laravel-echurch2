@@ -36,7 +36,7 @@
             <form action="{{ route('admin.user-submissions.update', $userSubmission->id) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <select name="status" class="form-control">
+                <select name="status" class="form-control black-text">
                     <option value="Pending" {{ $userSubmission->status === 'Pending' ? 'selected' : '' }}>Pending</option>
                     <option value="Ongoing" {{ $userSubmission->status === 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
                     <option value="Done" {{ $userSubmission->status === 'Done' ? 'selected' : '' }}>Done</option>
@@ -49,7 +49,7 @@
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
-                    <textarea name="message" class="form-control" rows="2">{{ $userSubmission->message }}</textarea>
+                    <textarea name="message" class="form-control black-text" rows="2">{{ $userSubmission->message }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Message</button>
             </form>

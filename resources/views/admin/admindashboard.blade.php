@@ -9,15 +9,22 @@
         </div>
     </x-slot>
 
-    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        {{ __("You're logged in as Admin!")  }}
+        <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        {{ __("You're logged in as Admin!")  }}<br>
         
+        
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <x-button><a  href="{{ route('admin.user-submissions.index') }}" class="btn btn-primary">
+            {{ __("Submissions")  }} </x-button>    
+        </div>
        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a  href="{{ route('admin.user-submissions.index') }}" class="btn btn-primary">
-            {{ __("submissions")  }}
-            sample
+        <x-button>
+            <a href="{{ route('export-user-submissions') }}" class="btn btn-primary">Export User Mass Intention</a>
+        </x-button>
         </div>
+        
+
     </div>
     </div>
 </div>

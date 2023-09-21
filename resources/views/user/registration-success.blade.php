@@ -11,10 +11,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                 <div>
-                <h1>Registration Successful</h1>
-                <p>Congratulations! Your registration was successful.</p>
-                <p>You can now log in and enjoy our services.</p>
-                <a href="{{ route('user.dashboard') }}">Back</a>
+                <h1>Success</h1>
+
+                <br> <a href="{{ route('user.dashboard') }}" class="btn btn-primary">
+                    {{ __('Dashboard') }}
+                </a>
     </div>
                 </div>
     

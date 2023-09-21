@@ -25,4 +25,5 @@
             </div>
         </div>
     </div>
+    <br> 
 </x-app-layout>
