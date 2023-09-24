@@ -31,8 +31,20 @@
         x-cloak
     >
         <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200">
-            <!-- Sidebar -->
-            <x-sidebar.sidebar />
+            <!-- Determine the user's type -->
+            @php
+                $usertype = auth()->user()->usertype ?? null;
+            @endphp
+
+            <!-- Include the appropriate sidebar based on user type -->
+            @if ($usertype === 'user')
+                @include('components.sidebar.user-sidebar')
+            @elseif ($usertype === 'admin')
+                @include('components.sidebar.admin-sidebar')
+            @else
+                @include('components.sidebar.default-sidebar')
+            @endif
+            
 
             <!-- Page Wrapper -->
             <div

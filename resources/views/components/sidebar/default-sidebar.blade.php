@@ -47,15 +47,16 @@
         
     </div>
 
-    @if (auth()->user()->usertype === 'admin')
-    <!-- Admin-specific sidebar links -->
-    <x-sidebar.link title="Sample (Admin)" href="#" />
-    <x-sidebar.link title="Users" href="{{ route('admin.displayUser') }}"/>
-    <x-sidebar.link title="Events" href="{{ route('admin.event-index') }}"/>
-@else
-    <!-- User-specific sidebar links -->
-    <x-sidebar.link title="Sample (User)" href="#" />
-@endif
+    @php
+        $links = array_fill(0, 20, '');
+    @endphp
 
+    
+        <x-sidebar.link title="Sample " href="#" />
+        <x-sidebar.link title="Sample " href="#" />
+        <x-sidebar.link title="Users" href="{{ route('admin.displayUser') }}"/>
+        <x-sidebar.link title="Events" href="{{ route('admin.event-index') }}"/>
+        
 
 </x-perfect-scrollbar>
+

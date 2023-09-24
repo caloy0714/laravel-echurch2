@@ -23,8 +23,6 @@
             <a href="{{ route('export-user-submissions') }}" class="btn btn-primary">Export User Mass Intention</a>
         </x-button>
         </div>
-        
-
     </div>
     </div>
 </div>
