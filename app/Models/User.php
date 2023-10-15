@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserSubmission; 
+use App\Models\BaptismForm; 
 
 class User extends Authenticatable
 {
@@ -69,9 +70,14 @@ class User extends Authenticatable
         return $this->usertype;
     }
 
-        public function userSubmissions()
+    public function userSubmissions()
     {
         return $this->hasMany(UserSubmission::class);
+    }
+
+    public function baptismForms()
+    {
+        return $this->hasMany(BaptismForm::class);
     }
 
 

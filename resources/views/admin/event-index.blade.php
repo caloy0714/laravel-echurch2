@@ -12,40 +12,40 @@
                     <h1>Event List</h1>
                     <a href="{{ route('admin.event-create') }}" class="btn btn-primary">Create Event</a>
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Actions</th>
-                                <th>Status</th>
-                                <!-- <th>Code</th> -->
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Actions</th>
+                            <th>Status</th>
+                            <!-- <th>Code</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
                         @foreach($events as $event)
-                            <tr>
-                                <td>{{ $event->id }}</td>
-                                <td>{{ $event->title }}</td>
-                                <td>{{ $event->start_date }}</td>
-                                <td>{{ $event->end_date }}</td>
-                                <!-- <td>{{ $event->status ? 'Active' : 'Inactive' }}</td> -->
-                                
-                                <td>
-                                    <a href="{{ route('admin.event-edit', $event->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('admin.event-destroy', $event->id) }}" method="POST" style="display: inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                                <td>{{ $event->getStatus() }}</td>
-                                <!-- <td>RDzwpt6</td> -->
-                            </tr>
+                        <tr>
+                            <td class="px-4">{{ $event->id }}</td>
+                            <td class="px-4">{{ $event->title }}</td>
+                            <td class="px-4">{{ $event->start_date }}</td>
+                            <td class="px-4">{{ $event->end_date }}</td>
+                            <!-- <td class="px-4">{{ $event->status ? 'Active' : 'Inactive' }}</td> -->
+                            <td class="px-4">
+                                <a href="{{ route('admin.event-edit', $event->id) }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ route('admin.event-destroy', $event->id) }}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                            <td class="px-4">{{ $event->getStatus() }}</td>
+                            <!-- <td class="px-4">RDzwpt6</td> -->
+                        </tr>
                         @endforeach
                     </tbody>
-                    </table>
+                </table>
+
                 </div>
             </div>
         </div>

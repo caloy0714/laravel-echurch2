@@ -14,9 +14,9 @@
         
         
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <x-button><a  href="{{ route('admin.user-submissions.index') }}" class="btn btn-primary">
+        <!-- <x-button><a  href="{{ route('admin.user-submissions.index') }}" class="btn btn-primary">
             {{ __("Submissions")  }} </x-button>    
-        </div>
+        </div> -->
        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <x-button>

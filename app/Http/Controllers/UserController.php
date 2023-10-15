@@ -19,12 +19,6 @@ class UserController extends Controller
 
     }
 
-    // public function viewSubmittedRequests()
-    // {
-    //     $userSubmissions = UserSubmission::with(['event', 'user'])->get();
-    
-    //     return view('user.submitted-requests', compact('userSubmissions'));
-    // }
 
     public function viewSubmittedRequests()
     {

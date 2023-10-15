@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\UserSubmission; 
 use App\Models\User; 
 
+
 class UserSubmission extends Model
 {
     use HasFactory;

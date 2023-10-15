@@ -9,18 +9,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\UserSubmissionController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BaptismFormController;
 use App\Exports\UserSubmissionsExport;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,17 +45,21 @@ Route::get('/user/event-registration', [EventRegistrationController::class, 'sho
 
 
 Route::get('/admin/user-submissions', [AdminController::class, 'viewUserSubmissions'])->name('admin.user-submissions.index');
-Route::patch('/admin/user-submissions/update/{id}', [AdminController::class, 'updateUserSubmission'])->name('admin.user-submissions.update');;
+Route::patch('/admin/user-submissions/update/{id}', [AdminController::class, 'updateUserSubmission'])->name('admin.user-submissions.update');
 Route::get('/admin/user-submissions/{id}/edit-message', [AdminController::class, 'editUserSubmissionMessage'])->name('admin.user-submissions.edit-message');
 Route::patch('/admin/user-submissions/{id}/update-message', [AdminController::class, 'updateUserSubmissionMessage'])->name('admin.user-submissions.update-message');
 
 Route::get('/user/submitted-requests', [UserController::class, 'viewSubmittedRequests'])->name('user.submitted-requests');
 Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
 
-
 //EXCEL
 Route::get('/export-user-submissions', [UserSubmissionController::class, 'exportUserSubmissions'])->name('export-user-submissions');
 
+//BAPTISM
+Route::get('/user/baptism/show/{id}', [BaptismFormController::class, 'show'])->name('user.baptism.show');
+Route::get('/user/baptism/create', [BaptismFormController::class, 'create'])->name('user.baptism.create');
+Route::post('/user/baptism/store', [BaptismFormController::class, 'store'])->name('user.baptism.store');
+// Route::get('/baptism/success', [BaptismController::class, 'success'])->name('baptism.success');
 
 
 

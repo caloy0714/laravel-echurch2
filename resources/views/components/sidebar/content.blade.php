@@ -49,12 +49,28 @@
 
     @if (auth()->user()->usertype === 'admin')
     <!-- Admin-specific sidebar links -->
-    <x-sidebar.link title="Sample (Admin)" href="#" />
+    <x-sidebar.link title=" For Admin" href="#" />
     <x-sidebar.link title="Users" href="{{ route('admin.displayUser') }}"/>
+    <x-sidebar.link title="Mass Intention Submission" href="{{ route('admin.user-submissions.index') }}"/>
     <x-sidebar.link title="Events" href="{{ route('admin.event-index') }}"/>
+
 @else
     <!-- User-specific sidebar links -->
     <x-sidebar.link title="Sample (User)" href="#" />
+    <x-sidebar.link
+    title="Create Baptism Form"
+    href="{{ route('user.baptism.create') }}"
+    :isActive="request()->routeIs('user.baptism.create')"
+/>
+<x-sidebar.link
+    title="View Baptism Form"
+    href="{{ route('user.baptism.show', ['id' => auth()->user()->id]) }}"
+    :isActive="request()->routeIs('user.baptism.show')"
+/>
+
+
+
+
 @endif
 
 
