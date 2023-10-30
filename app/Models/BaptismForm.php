@@ -34,12 +34,12 @@ class BaptismForm extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function show()
-    {
-        $baptismForms = BaptismForm::all();
+    // public function show()
+    // {
+    //     $baptismForms = BaptismForm::all();
 
-        return view('user.baptism.show', compact('baptismForms'));
-    }
+    //     return view('user.baptism.show', compact('baptismForms'));
+    // }
 
     
     public function getChild()

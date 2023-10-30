@@ -13,8 +13,12 @@ use App\Http\Controllers\BaptismFormController;
 use App\Exports\UserSubmissionsExport;
 
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::get('/welcome2', function () {
@@ -26,7 +30,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
-// Route::get('/home',[HomeController::class,'index']);
+Route::get('/admin/admindashboard', [HomeController::class,'index'])
+    ->name('admin.admindashboard');
+
+// Route::get('/home', [HomeController::class,'getStatusCounts'])->name('admin.admindashboard');
+
 Route::get('/users', [UserController::class, 'index'])->name('admin.displayUser');
 Route::resource('events', EventController::class);
 Route::get('/admin/events', [EventController::class, 'index'])->name('admin.event-index');
@@ -54,12 +62,19 @@ Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.
 
 //EXCEL
 Route::get('/export-user-submissions', [UserSubmissionController::class, 'exportUserSubmissions'])->name('export-user-submissions');
+// Route::get('/admindashboard', [UserSubmissionController::class, 'status'])->name('admin.admindashboard');
 
 //BAPTISM
-Route::get('/user/baptism/show/{id}', [BaptismFormController::class, 'show'])->name('user.baptism.show');
+Route::get('/user/baptism/show', [BaptismFormController::class, 'show'])->name('user.baptism.show');
 Route::get('/user/baptism/create', [BaptismFormController::class, 'create'])->name('user.baptism.create');
 Route::post('/user/baptism/store', [BaptismFormController::class, 'store'])->name('user.baptism.store');
 // Route::get('/baptism/success', [BaptismController::class, 'success'])->name('baptism.success');
+// Route::get('/admin/baptism-forms', [BaptismFormController::class, 'index'])->name('admin.baptism-forms.index');
+// Route::patch('/admin/baptism-forms/{baptismForm}', [BaptismFormController::class, 'updateStatus'])->name('admin.baptism-forms.update-status');
+//
+Route::get('/admin/baptism-forms/update-all', [BaptismFormController::class, 'editAll'])->name('admin.baptism-forms.edit-all');
+Route::patch('/admin/baptism-forms/update-all', [BaptismFormController::class, 'updateAll'])->name('admin.baptism-forms.update-all');
+
 
 
 

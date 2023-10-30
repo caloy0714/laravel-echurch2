@@ -62,6 +62,15 @@ class UserSubmissionController extends Controller
         return Excel::download(new UserSubmissionsExport, 'user_submissions.xlsx');
     }
 
+    public function status()
+    {
+        $pendingCount = UserSubmission::where('status', 'Pending')->count();
+        $ongoingCount = UserSubmission::where('status', 'Ongoing')->count();
+        $doneCount = UserSubmission::where('status', 'Done')->count();
+
+        return view('admin.admindashboard', compact('pendingCount', 'ongoingCount', 'doneCount'));
+    }
+
     // public function submit(Request $request)
     // {
     //     // Validation rules for the form fields

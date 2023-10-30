@@ -1,18 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="text-xl font-semibold leading-tight">
             {{ __('View Baptism Form') }}
+            </h2>
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
+    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
 
                 <h1 class="text-2xl font-bold mb-4">Baptism Form</h1>
-
+                
+                @if ($baptismForm)
                 <div class="mb-4">
-                    <strong>Name of Child:</strong> {{ $baptismForm->name_of_child }}
+                    <p>Name of Child: {{ $baptismForm->name_of_child }}</p>
                 </div>
 
                 <div class="mb-4">
@@ -20,7 +22,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <strong>Father:</strong> {{ $baptismForm->father_name }}
+                    <strong>Father:</strong> {{ $baptismForm->father }}
                 </div>
 
                 <div class="mb-4">
@@ -72,8 +74,12 @@
                 </div>
 
                 <div class="mb-4">
-                    <strong>Admin Message:</strong> {{ $baptismForm->admin_message }}
+                    <strong>Admin Message:</strong> {{ $baptismForm->message }}
                 </div>
+
+                @else
+            <p>No Baptism Form submitted.</p>
+        @endif
 
             </div>
         </div>

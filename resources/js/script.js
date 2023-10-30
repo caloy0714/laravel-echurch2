@@ -6,7 +6,9 @@
 //
 // Scripts
 // 
-
+import 'datatables.net-dt';
+import 'datatables.net-dt/js/dataTables.dataTables.min';
+import 'datatables.net-dt/css/jquery.dataTables.min.css';
 window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element

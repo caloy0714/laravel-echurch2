@@ -1,44 +1,40 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        </div>
     </x-slot>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                <table id="myTables" class="display">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>User Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($users as $user)
+
+    <div class="p-6 overflow-hidden bg-white dark:bg-dark-eval-1 rounded-md shadow-md">
+        <!-- {{ __("You're logged in as Admin!") }}<br> -->
+        <div class="py-12">
+            <h1 class="text-3xl font-semibold my-4">Users List</h1>
+            <table id="myTables" class="display">
+                <thead>
                     <tr>
-                        <td>{{ $user->getId() }}</td>
-                        <td>{{ $user->getName() }}</td>
-                        <td>{{ $user->getEmail() }}</td>
-                        <td>{{ $user->getUsertype() }}</td>
+                        <th class="px-4 py-2">ID</th>
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">User Type</th>
                     </tr>
-                @endforeach
-        </tbody>
-    </table>
-                </div>
-            </div>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                    <tr>
+                        <td class="px-4 py-2">{{ $user->getId() }}</td>
+                        <td class="px-4 py-2">{{ $user->getName() }}</td>
+                        <td class="px-4 py-2">{{ $user->getEmail() }}</td>
+                        <td class="px-4 py-2">{{ $user->getUsertype() }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    
 </x-app-layout>
 <script>
-
-jQuery(document).ready( function () {
-    jQuery('#myTables').DataTable();
-});
+    jQuery(document).ready(function () {
+        jQuery('#myTables').DataTable();
+    });
 </script>

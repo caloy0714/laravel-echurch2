@@ -3,6 +3,11 @@ import './bootstrap'
 import Alpine from 'alpinejs'
 import collapse from '@alpinejs/collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
+import 'datatables.net-dt';
+import 'datatables.net-dt/js/dataTables.dataTables.min';
+import 'datatables.net-dt/css/jquery.dataTables.min.css';
+
+
 
 window.PerfectScrollbar = PerfectScrollbar
 
@@ -71,6 +76,9 @@ document.addEventListener('alpine:init', () => {
     })
 })
 
+
+
 Alpine.plugin(collapse)
 
 Alpine.start()
+
